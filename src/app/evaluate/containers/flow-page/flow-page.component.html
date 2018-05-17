@@ -8,17 +8,9 @@
           <button mat-button matStepperNext>Next</button>
         </div>
       </mat-step>
-      <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>Test</ng-template>
-          <mat-form-field>
-            <input matInput placeholder="Address" formControlName="secondCtrl" required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
+      <mat-step>
+        <ng-template matStepLabel>Test</ng-template>
+        <app-student-form-page></app-student-form-page>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Result</ng-template>

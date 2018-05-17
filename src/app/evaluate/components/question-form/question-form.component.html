@@ -1,3 +1,23 @@
-<p>
-  question-form works!
-</p>
+<form fxLayout="column" class="w-100-p">
+  <div fxLayout="row" fxLayoutAlign="start">
+    <mat-form-field fxFlex="50">
+      <input matInput placeholder="Key" class="w-100-p" value="1">
+      <mat-error *ngIf="formErrors?.name.required">
+        required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlex="50">
+      <input matInput placeholder="Score" class="w-100-p" value="5">
+      <mat-error *ngIf="formErrors?.name.required">
+        required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <mat-form-field fxFlex="100">
+    <input matInput placeholder="Question" class="w-100-p"  value="ab'+b">
+    <mat-error *ngIf="formErrors?.name.required">
+      required
+    </mat-error>
+  </mat-form-field>
+</form>
+
