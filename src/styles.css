@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  font-family: "Archia", BlinkMacSystemFont, -apple-system, "Helvetica Neue", "Helvetica", sans-serif !important;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.p-16 {
+  padding: 16px !important;
+}
+
+.p-24 {
+  padding: 24px !important;
+}
+
+.p-48 {
+  padding: 48px !important;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.m-16 {
+  margin: 16px !important;
+}
+
+.mb-16 {
+  margin-bottom: 16px !important;
+}
+
+.m-24 {
+  margin: 24px !important;
+}
+
+.m-48 {
+  margin: 48px !important;
+}
+
+.h-100-p {
+  height: 100% !important;
+}
+
+.w-100-p {
+  width: 100% !important;
+}

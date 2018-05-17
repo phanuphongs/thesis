@@ -1,14 +1,18 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "Automatic BA correction",
   "projects": {
     "thesis-front": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@ngrx/schematics:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -118,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "thesis-front"
+  "defaultProject": "thesis-front",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
