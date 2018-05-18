@@ -1,28 +1,28 @@
-<form fxLayout="column" class="w-100-p">
+<form name="form" [formGroup]="form" fxLayout="column" class="w-100-p">
   <mat-form-field fxFlex="100">
-    <input matInput placeholder="Student ID" class="w-100-p" value="57090010">
-    <mat-error *ngIf="formErrors?.name.required">
+    <input matInput placeholder="Student ID" class="w-100-p" value="57090010" formControlName="id">
+    <mat-error *ngIf="formErrors.id.required">
       required
     </mat-error>
   </mat-form-field>
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel formArrayName="answers" *ngFor="let item of form.get('answers').controls; let i = index;" class="mb-16">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Question 1
+          Question {{form.controls.answers.controls[i].controls.question.value.id}}
         </mat-panel-title>
         <mat-panel-description>
-          ab'+b
+          {{form.controls.answers.controls[i].controls.question.value.question}}
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <div fxLayout="column" fxLayoutAlign="start start" class="w-100-p">
+      <div fxLayout="column" fxLayoutAlign="start start" class="w-100-p" [formGroupName]="i">
         <mat-form-field>
-          <input type="number" matInput placeholder="Score">
+          <input type="number" matInput placeholder="Score" formControlName="score">
         </mat-form-field>
 
         <mat-form-field class="w-100-p">
-          <textarea matInput placeholder="Student answer" mat-autosize="true"></textarea>
+          <textarea matInput placeholder="Student answer" mat-autosize="true" formControlName="answer"></textarea>
         </mat-form-field>
       </div>
     </mat-expansion-panel>

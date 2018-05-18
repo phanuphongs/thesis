@@ -1,5 +1,13 @@
 <div class="h-100-p w-100-p" fxLayout="column" fxLayoutAlign="start start">
-  <app-form-container title="Student" class="w-100-p">
-    <app-student-form class="w-100-p"></app-student-form>
+  <app-form-container
+    title="Student"
+    class="w-100-p"
+    (add)="add()"
+    (delete)="delete(i)"
+    *ngFor="let student of students; let i = index">
+    <app-student-form
+      [index]="0"
+      [questions]="[{id: 1, question:'aa', score: 5},{id: 2, question:'aa+b', score: 5}]"
+      class="w-100-p"></app-student-form>
   </app-form-container>
 </div>

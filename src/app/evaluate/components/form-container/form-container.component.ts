@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-form-container',
@@ -7,6 +7,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class FormContainerComponent implements OnInit {
   @Input() title: string;
+  @Output() add = new EventEmitter();
+  @Output() delete = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {

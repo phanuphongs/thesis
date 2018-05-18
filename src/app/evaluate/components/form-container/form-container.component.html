@@ -9,10 +9,10 @@
   </mat-card>
   <div fxFlex="0 1 auto" fxLayout="column" fxLayoutAlign="start start" class="side-container">
     <div fxLayout="column" fxLayoutAlign="start start">
-      <button mat-raised-button class="button-side-action">
+      <button mat-raised-button class="button-side-action" (click)="add.emit(true)">
         <mat-icon>add</mat-icon>
       </button>
-      <button mat-raised-button class="button-side-action">
+      <button mat-raised-button class="button-side-action" (click)="delete.emit(true)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>
