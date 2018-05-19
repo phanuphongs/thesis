@@ -9,6 +9,10 @@ import { ModelCardComponent } from './components/model-card/model-card.component
 import { FormContainerComponent } from './components/form-container/form-container.component';
 import { StudentFormPageComponent } from './containers/student-form-page/student-form-page.component';
 import { StudentFormComponent } from './components/student-form/student-form.component';
+import { StoreModule } from '@ngrx/store';
+import * as fromReducers from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { StudentEffects } from './effects/student.effects';
 
 
 const routes = [
@@ -20,6 +24,12 @@ const routes = [
   imports: [
     SharedModule,
     RouterModule.forChild(routes),
+    StoreModule.forFeature(
+      'evaluate',
+      fromReducers.reducers,
+      { metaReducers: fromReducers.metaReducers },
+    ),
+    EffectsModule.forFeature([StudentEffects]),
   ],
   exports: [
 

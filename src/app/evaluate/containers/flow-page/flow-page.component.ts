@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+
+import * as fromEvaluate from '../../reducers';
+import * as StudentActions from '../../actions/student.actions';
 
 @Component({
   selector: 'app-flow-page',
@@ -10,7 +14,9 @@ export class FlowPageComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private store: Store<fromEvaluate.State>,
+  ) {}
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({

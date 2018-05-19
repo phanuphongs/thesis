@@ -1,6 +1,11 @@
-import {Component, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {QuestionModel} from '../../models/question.model';
+import {
+  AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild,
+  ViewChildren
+} from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Question } from '../../models/question.model';
+import { Student } from '../../models/student.model';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-student-form',
@@ -8,38 +13,66 @@ import {QuestionModel} from '../../models/question.model';
   styleUrls: ['./student-form.component.scss'],
 })
 export class StudentFormComponent implements OnInit, OnChanges {
-  @Input() questions: QuestionModel[];
-  @Input() index: number;
-  @Output() dataChange: any;
+  @Input() questions: Question[];
+  @Input() student: Student;
+  @Output() dataChange = new EventEmitter();
   form: FormGroup;
   formErrors: any;
+  answers: any = {};
+
   constructor(private formBuilder: FormBuilder) { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.student) {
+      console.log(changes);
+      this.initForm(changes.student.currentValue);
+      this.answers = {
+        ...changes.student.currentValue.answers,
+      };
+    }
+    if (changes.questions) {
+      const keys = Object.keys(this.answers);
+      changes.questions.currentValue.forEach(
+        (ele) => {
+          if (keys.indexOf(`${ele.id}`) < 0) {
+            this.answers[ele.id] = {
+              answer: '',
+              score: '',
+              expand: false,
+            };
+          }
+        },
+      );
+    }
+  }
 
   ngOnInit() {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    const answers = changes.questions.currentValue.map(
-      (ele) => {
-        return this.formBuilder.group({
-          question: ele,
-          answer: '',
-          score: '',
-        });
-      },
-    );
-    this.initForm(answers);
+  public formChange(): void {
+    const student = {
+      ...this.form.value,
+      answers: this.answers,
+    };
+    this.dataChange.emit(student);
   }
 
-  private initForm(answers = []) {
+  public textAreaChange(): void {
+    const student = {
+      ...this.form.value,
+      answers: this.answers,
+    };
+    this.dataChange.emit(student);
+  }
+
+
+  private initForm(student: Student): void {
     this.formErrors = {
       id   : {},
-      answer: {},
-      score: {},
+      studentId: {},
     };
     this.form = this.formBuilder.group({
-      id: [''],
-      answers: this.formBuilder.array(answers),
+      id: [student.id],
+      studentId: [student.studentId],
     });
     this.form.valueChanges.subscribe(() => {
       this.onFormValuesChanged();

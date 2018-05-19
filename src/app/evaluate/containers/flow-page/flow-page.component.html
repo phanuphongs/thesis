@@ -10,7 +10,19 @@
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Test</ng-template>
-        <app-student-form-page></app-student-form-page>
+        <mat-tab-group>
+          <mat-tab label="Question">
+            <ng-template matTabContent>
+              <app-question-form-page></app-question-form-page>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Student">
+            <ng-template matTabContent>
+              <app-student-form-page></app-student-form-page>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Result</ng-template>

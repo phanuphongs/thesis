@@ -7,6 +7,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class FormContainerComponent implements OnInit {
   @Input() title: string;
+  @Input() index: number;
+  @Input() showAction: boolean;
   @Output() add = new EventEmitter();
   @Output() delete = new EventEmitter();
 

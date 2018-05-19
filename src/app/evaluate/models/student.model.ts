@@ -1,10 +1,7 @@
-import {QuestionModel} from './question.model';
+import {Question} from './question.model';
 
-export interface StudentModel {
-  id?: string;
-  score?: number;
-  answers: {
-    question: number | QuestionModel,
-    answer: string,
-  }[];
+export interface Student {
+  id: number;
+  studentId: string;
+  answers: any;
 }
