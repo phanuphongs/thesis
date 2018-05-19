@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'bc-not-found-page',
@@ -10,7 +11,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         <p>Hey! It looks like this page doesn't exist yet.</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" routerLink="/">Take Me Home</button>
+        <button mat-raised-button color="primary" (click)="redirect()">Take Me Home</button>
       </mat-card-actions>
     </mat-card>
   `,
@@ -22,4 +23,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   `,
   ],
 })
-export class NotFoundPageComponent {}
+export class NotFoundPageComponent {
+
+  constructor(private router: Router) {}
+
+  redirect() {
+    this.router.navigate(['/']);
+  }
+}

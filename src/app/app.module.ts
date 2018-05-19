@@ -16,15 +16,24 @@ import {
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { CustomRouterStateSerializer } from './shared/utils';
-import {HttpClientModule} from '@angular/common/http';
-import {RouterModule} from '@angular/router';
-import {metaReducers, reducers} from './reducer';
-import {environment} from '../environments/environment';
-import {routes} from './routes/routes';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { metaReducers, reducers } from './reducer';
+import { environment } from '../environments/environment';
+import { routes } from './routes/routes';
+import { ToolbarComponent } from './shared/components/toolbar.component';
+import { SidenavComponent } from './shared/components/sidenav.component';
+import { NavItemComponent } from './shared/components/nav-item.component';
+import { LayoutComponent } from './shared/components/layout.component';
+import { EvaluatorRootModule } from './evaluator/evaluator.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LayoutComponent,
+    NavItemComponent,
+    SidenavComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +48,8 @@ import {routes} from './routes/routes';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
+
+    EvaluatorRootModule,
   ],
   providers: [
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },

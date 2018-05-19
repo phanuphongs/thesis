@@ -1,0 +1,22 @@
+<div class="m-48">
+  <mat-card>
+    <div fxLayout="row" class="w-100-p" fxLayoutAlign="flex-end">
+      <file-upload></file-upload>
+    </div>
+    <mat-tab-group>
+      <mat-tab label="Question">
+        <ng-template matTabContent>
+          <app-question-form-page></app-question-form-page>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Student">
+        <ng-template matTabContent>
+          <app-student-form-page></app-student-form-page>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="create()">Create</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

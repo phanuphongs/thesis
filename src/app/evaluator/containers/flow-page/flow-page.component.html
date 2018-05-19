@@ -7,6 +7,9 @@
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Test</ng-template>
+        <div fxLayout="row" class="w-100-p" fxLayoutAlign="flex-end">
+          <file-upload></file-upload>
+        </div>
         <mat-tab-group>
           <mat-tab label="Question">
             <ng-template matTabContent>
@@ -19,7 +22,6 @@
             </ng-template>
           </mat-tab>
         </mat-tab-group>
-
       </mat-step>
       <mat-step>
         <app-result-page></app-result-page>

@@ -3,8 +3,8 @@ import {
   ViewChildren
 } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Question } from '../../models/question.model';
-import { Student } from '../../models/student.model';
+import { Question } from '../../../evaluator/models/question.model';
+import { Student } from '../../../evaluator/models/student.model';
 import { MatAccordion } from '@angular/material/expansion';
 
 @Component({

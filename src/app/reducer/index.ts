@@ -15,13 +15,14 @@ import * as fromRouter from '@ngrx/router-store';
  * ensure that none of the reducers accidentally mutates the state.
  */
 import { storeFreeze } from 'ngrx-store-freeze';
-
+import * as fromLayout from '../shared/reducers/layout.reducer';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
+  layout: fromLayout.State;
   router: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
@@ -32,6 +33,7 @@ export interface State {
  */
 export const reducers: ActionReducerMap<State> = {
   router: fromRouter.routerReducer,
+  layout: fromLayout.reducer,
 };
 
 // console.log all actions
@@ -52,3 +54,11 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
 export const metaReducers: MetaReducer<State>[] = !environment.production
   ? [logger, storeFreeze]
   : [];
+
+
+export const getLayoutState = createFeatureSelector<fromLayout.State>('layout');
+
+export const getShowSidenav = createSelector(
+  getLayoutState,
+  fromLayout.getShowSidenav,
+);

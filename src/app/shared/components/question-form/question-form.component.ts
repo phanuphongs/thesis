@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {Question} from '../../models/question.model';
+import {Question} from '../../../evaluator/models/question.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({

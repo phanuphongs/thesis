@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<bc-layout>
+  <bc-sidenav [open]="showSidenav$ | async">
+    <bc-nav-item (navigate)="closeSidenav()" routerLink="/" icon="grade" hint="Evaluate the exam">
+      Evaluate
+    </bc-nav-item>
+    <bc-nav-item (navigate)="closeSidenav()"  routerLink="/create" icon="create" hint="Create your own model">
+      Create model
+    </bc-nav-item>
+    <bc-nav-item (navigate)="closeSidenav()"  routerLink="/solve" icon="search" hint="Find the solution">
+      Solver
+    </bc-nav-item>
+  </bc-sidenav>
+  <bc-toolbar (openMenu)="openSidenav()">
+    Automatic Boolean Algebra Evaluation System
+  </bc-toolbar>
+  <router-outlet></router-outlet>
+</bc-layout>

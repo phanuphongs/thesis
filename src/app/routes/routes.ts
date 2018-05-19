@@ -5,7 +5,15 @@ export const routes: Routes = [
   { path: '', redirectTo: '/evaluate', pathMatch: 'full' },
   {
     path: 'evaluate',
-    loadChildren: './evaluate/evaluate.module#EvaluateModule',
+    loadChildren: '../evaluator/evaluator.module#EvaluatorModule',
+  },
+  {
+    path: 'create',
+    loadChildren: '../creator/creator.module#CreatorModule',
+  },
+  {
+    path: 'solve',
+    loadChildren: '../solver/solver.module#SolverModule',
   },
   { path: '**', component: NotFoundPageComponent },
 ];

@@ -1,12 +1,10 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {select, Store} from '@ngrx/store';
-import {from, Observable} from 'rxjs';
-import {Question} from '../../models/question.model';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Question } from '../../../evaluator/models/question.model';
 
-import * as QuestionActions from '../../actions/question.actions';
-import * as fromEvaluate from '../../reducers';
-import * as StudentActions from '../../actions/student.actions';
-import {Update} from '@ngrx/entity';
+import * as fromEvaluate from '../../../evaluator/reducers';
+import * as QuestionActions from '../../../evaluator/actions/question.actions';
 
 
 @Component({

@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 
-import * as fromEvaluate from '../../reducers';
-import * as StudentActions from '../../actions/student.actions';
+import * as fromEvaluate from '../../../evaluator/reducers';
+import * as StudentActions from '../../../evaluator/actions/student.actions';
 import { Observable } from 'rxjs';
-import { Student } from '../../models/student.model';
-import {Question} from '../../models/question.model';
+import {Student} from '../../../evaluator/models/student.model';
+import {Question} from '../../../evaluator/models/question.model';
 
 @Component({
   selector: 'app-student-form-page',
