@@ -1,21 +1,29 @@
-<form fxLayout="column" class="w-100-p">
+<form name="form" [formGroup]="form" fxLayout="column" class="w-100-p">
   <div fxLayout="row" fxLayoutAlign="start">
     <mat-form-field fxFlex="50">
-      <input matInput placeholder="Key" class="w-100-p" value="1">
-      <mat-error *ngIf="formErrors?.name.required">
+      <input matInput placeholder="Key" class="w-100-p" formControlName="key" (focusout)="formChange()">
+      <mat-error *ngIf="formErrors?.key.required">
         required
       </mat-error>
     </mat-form-field>
     <mat-form-field fxFlex="50">
-      <input matInput placeholder="Score" class="w-100-p" value="5">
-      <mat-error *ngIf="formErrors?.name.required">
+      <input matInput placeholder="Score" class="w-100-p" formControlName="score" (focusout)="formChange()">
+      <mat-error *ngIf="formErrors?.score.required">
+        required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start">
+    <mat-form-field fxFlex="100">
+      <input matInput placeholder="variables" class="w-100-p" formControlName="variables" (focusout)="formChange()">
+      <mat-error *ngIf="formErrors?.variables.required">
         required
       </mat-error>
     </mat-form-field>
   </div>
   <mat-form-field fxFlex="100">
-    <input matInput placeholder="Question" class="w-100-p"  value="ab'+b">
-    <mat-error *ngIf="formErrors?.name.required">
+    <input matInput placeholder="Question" class="w-100-p"  formControlName="question" (focusout)="formChange()">
+    <mat-error *ngIf="formErrors?.question.required">
       required
     </mat-error>
   </mat-form-field>

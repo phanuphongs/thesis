@@ -1,14 +1,14 @@
 <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
   <mat-card class="w-100-p mb-16" fxLayout="column" fxLayoutAlign="start start">
     <mat-card-header>
-      <mat-card-title>{{title}} 1</mat-card-title>
+      <mat-card-title>{{title}} {{index + 1}}</mat-card-title>
     </mat-card-header>
     <mat-card-content class="m-0 w-100-p" fxLayout="row">
       <ng-content class="w-100-p"></ng-content>
     </mat-card-content>
   </mat-card>
   <div fxFlex="0 1 auto" fxLayout="column" fxLayoutAlign="start start" class="side-container">
-    <div fxLayout="column" fxLayoutAlign="start start">
+    <div fxLayout="column" fxLayoutAlign="start start" *ngIf="showAction">
       <button mat-raised-button class="button-side-action" (click)="add.emit(true)">
         <mat-icon>add</mat-icon>
       </button>

@@ -1,30 +1,47 @@
 <form name="form" [formGroup]="form" fxLayout="column" class="w-100-p">
   <mat-form-field fxFlex="100">
-    <input matInput placeholder="Student ID" class="w-100-p" value="57090010" formControlName="id">
+    <input matInput placeholder="Student ID" class="w-100-p" formControlName="studentId" (focusout)="formChange()">
     <mat-error *ngIf="formErrors.id.required">
       required
     </mat-error>
   </mat-form-field>
   <mat-accordion>
-    <mat-expansion-panel formArrayName="answers" *ngFor="let item of form.get('answers').controls; let i = index;" class="mb-16">
+    <mat-expansion-panel
+      *ngFor="let question of questions;"
+      class="mb-16"
+      [expanded]="answers[question.id].expand"
+      (expandedChange)="answers[question.id].expand = !answers[question.id].expand">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Question {{form.controls.answers.controls[i].controls.question.value.id}}
+          Question {{question.key}}
         </mat-panel-title>
         <mat-panel-description>
-          {{form.controls.answers.controls[i].controls.question.value.question}}
+          {{question.question}}
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <div fxLayout="column" fxLayoutAlign="start start" class="w-100-p" [formGroupName]="i">
-        <mat-form-field>
-          <input type="number" matInput placeholder="Score" formControlName="score">
-        </mat-form-field>
+        <div fxLayout="column" fxLayoutAlign="start start" class="w-100-p">
+          <mat-form-field>
+            <input
+              type="number"
+              matInput
+              placeholder="Score"
+              [(ngModel)]="answers[question.id].score"
+              [ngModelOptions]="{standalone: true}"
+              (focusout)="formChange()">
+          </mat-form-field>
 
-        <mat-form-field class="w-100-p">
-          <textarea matInput placeholder="Student answer" mat-autosize="true" formControlName="answer"></textarea>
-        </mat-form-field>
-      </div>
+          <mat-form-field class="w-100-p">
+            <textarea
+              matInput
+              placeholder="Student answer"
+              mat-autosize="true"
+              [(ngModel)]="answers[question.id].answer"
+              [ngModelOptions]="{standalone: true}"
+              (focusout)="textAreaChange()"></textarea>
+          </mat-form-field>
+        </div>
+
     </mat-expansion-panel>
   </mat-accordion>
 </form>
