@@ -1,0 +1,12 @@
+<mat-accordion>
+  <mat-expansion-panel
+    *ngFor="let question of [1,2,3,4,5,6];"
+    class="mb-16">
+    <mat-expansion-panel-header [expandedHeight]="'auto'" [collapsedHeight]="'auto'">
+      <app-result-card class="w-100-p"></app-result-card>
+    </mat-expansion-panel-header>
+    <div fxLayout="column" fxLayoutAlign="start center" class="w-100-p">
+      <app-result-detail class="w-100-p"></app-result-detail>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

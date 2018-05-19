@@ -19,29 +19,26 @@
           {{question.question}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-
-        <div fxLayout="column" fxLayoutAlign="start start" class="w-100-p">
-          <mat-form-field>
-            <input
-              type="number"
-              matInput
-              placeholder="Score"
-              [(ngModel)]="answers[question.id].score"
-              [ngModelOptions]="{standalone: true}"
-              (focusout)="formChange()">
-          </mat-form-field>
-
-          <mat-form-field class="w-100-p">
-            <textarea
-              matInput
-              placeholder="Student answer"
-              mat-autosize="true"
-              [(ngModel)]="answers[question.id].answer"
-              [ngModelOptions]="{standalone: true}"
-              (focusout)="textAreaChange()"></textarea>
-          </mat-form-field>
-        </div>
-
+      <div fxLayout="column" fxLayoutAlign="start start" class="w-100-p">
+        <mat-form-field>
+          <input
+            type="number"
+            matInput
+            placeholder="Score"
+            [(ngModel)]="answers[question.id].score"
+            [ngModelOptions]="{standalone: true}"
+            (focusout)="formChange()">
+        </mat-form-field>
+        <mat-form-field class="w-100-p">
+          <textarea
+            matInput
+            placeholder="Student answer"
+            mat-autosize="true"
+            [(ngModel)]="answers[question.id].answer"
+            [ngModelOptions]="{standalone: true}"
+            (focusout)="textAreaChange()"></textarea>
+        </mat-form-field>
+      </div>
     </mat-expansion-panel>
   </mat-accordion>
 </form>

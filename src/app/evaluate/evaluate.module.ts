@@ -13,6 +13,9 @@ import { StoreModule } from '@ngrx/store';
 import * as fromReducers from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { StudentEffects } from './effects/student.effects';
+import { ResultPageComponent } from './containers/result-page/result-page.component';
+import { ResultCardComponent } from './components/result-card/result-card.component';
+import { ResultDetailComponent } from './components/result-detail/result-detail.component';
 
 
 const routes = [
@@ -51,6 +54,12 @@ const routes = [
     StudentFormPageComponent,
 
     StudentFormComponent,
+
+    ResultPageComponent,
+
+    ResultCardComponent,
+
+    ResultDetailComponent,
   ],
 })
 export class EvaluateModule { }

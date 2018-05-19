@@ -1,12 +1,9 @@
 <div class="m-48">
   <mat-card>
     <mat-horizontal-stepper [linear]="true" #stepper>
-      <mat-step>
+      <mat-step >
         <ng-template matStepLabel>Model</ng-template>
-        <app-model-page></app-model-page>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
+          <app-model-page (select)="selectModel($event, stepper)"></app-model-page>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Test</ng-template>
@@ -25,12 +22,7 @@
 
       </mat-step>
       <mat-step>
-        <ng-template matStepLabel>Result</ng-template>
-        You are now done.
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
+        <app-result-page></app-result-page>
       </mat-step>
     </mat-horizontal-stepper>
   </mat-card>

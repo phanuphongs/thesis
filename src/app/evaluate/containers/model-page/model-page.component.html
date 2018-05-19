@@ -1,3 +1,7 @@
 <div class="h-100-p w-100-p p-24" fxLayout="column" fxLayoutAlign="start start">
-  <app-model-card class="w-100-p"></app-model-card>
+  <app-model-card
+    class="w-100-p"
+    [selected]="n === selected"
+    (click)="selectModel(n)"
+    *ngFor="let n of [1,2,3,4,5,6,7,8,9,10]"></app-model-card>
 </div>

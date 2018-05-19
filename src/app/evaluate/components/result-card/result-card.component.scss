@@ -1,25 +1,23 @@
 mat-card{
   cursor: pointer;
+  box-shadow: none !important;
+  background: transparent;
 
   .highlight-number {
-    font-size: 5.2rem;
+    font-size: 2rem;
     font-weight: 100;
     margin: 0;
     .percent {
-      font-size: 2rem;
+      font-size: 1rem;
     }
 
   }
 
   .sub-highlight-number {
-    font-size: 3.5em;
+    font-size: 1em;
     font-weight: 200;
     .percent {
       font-size: 1em;
     }
   }
-}
-
-.selected-true {
-  background: rgba(0, 0, 0, 0.15);
 }

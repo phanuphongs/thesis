@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-model-card',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./model-card.component.scss']
 })
 export class ModelCardComponent implements OnInit {
+  @Input() selected: boolean;
 
   constructor() { }
 

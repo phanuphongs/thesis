@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { MatStepper } from '@angular/material';
 
 import * as fromEvaluate from '../../reducers';
 import * as StudentActions from '../../actions/student.actions';
@@ -20,11 +21,16 @@ export class FlowPageComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      model: ['', Validators.required],
     });
     this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required],
     });
+  }
+
+  selectModel(id: number, stepper: MatStepper): void {
+    this.firstFormGroup.controls['model'].setValue(id);
+    stepper.next();
   }
 
 }
