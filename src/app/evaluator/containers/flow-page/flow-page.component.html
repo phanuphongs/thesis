@@ -1,8 +1,8 @@
 <div class="m-48">
   <mat-card>
     <mat-horizontal-stepper [linear]="true" #stepper>
-      <mat-step >
-        <ng-template matStepLabel>Model</ng-template>
+      <mat-step [stepControl]="firstFormGroup">
+        <ng-template matStepLabel >Model</ng-template>
           <app-model-page (select)="selectModel($event, stepper)"></app-model-page>
       </mat-step>
       <mat-step>

@@ -24,13 +24,15 @@ export class StudentFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.student) {
-      console.log(changes);
+      console.log('student');
+      console.log(changes.student.currentValue)
       this.initForm(changes.student.currentValue);
       this.answers = {
         ...changes.student.currentValue.answers,
       };
     }
     if (changes.questions) {
+      console.log('question');
       const keys = Object.keys(this.answers);
       changes.questions.currentValue.forEach(
         (ele) => {
@@ -48,11 +50,26 @@ export class StudentFormComponent implements OnInit, OnChanges {
 
   ngOnInit() {}
 
+  public open(id): void {
+    this.answers[id] = {
+      ...this.answers[id],
+      expand: true,
+    };
+  }
+
+  public close(id): void {
+    this.answers[id] = {
+      ...this.answers[id],
+      expand: false,
+    };
+  }
+
   public formChange(): void {
     const student = {
       ...this.form.value,
       answers: this.answers,
     };
+    console.log(student);
     this.dataChange.emit(student);
   }
 
@@ -61,6 +78,7 @@ export class StudentFormComponent implements OnInit, OnChanges {
       ...this.form.value,
       answers: this.answers,
     };
+    console.log(student);
     this.dataChange.emit(student);
   }
 

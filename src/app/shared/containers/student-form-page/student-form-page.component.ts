@@ -41,6 +41,7 @@ export class StudentFormPageComponent implements OnInit {
   }
 
   public formChange(data: Student): void {
+    console.log(data);
     this.store.dispatch(
       new StudentActions.UpdateStudent(
         {
