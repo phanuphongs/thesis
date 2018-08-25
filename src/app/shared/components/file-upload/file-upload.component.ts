@@ -13,12 +13,19 @@ import {FileDropModule, UploadFile, UploadEvent, FileSystemFileEntry, FileSystem
   styles: [],
 })
 export class FileUploadComponent {
-
+  @Output() files = new EventEmitter();
 
   constructor(public dialog: MatDialog) { }
 
   openDialog(): void {
-    this.dialog.open(UploadDialog);
+    const dialog = this.dialog.open(UploadDialog);
+    const subsciption = dialog.afterClosed().subscribe(
+      (data) => {
+        this.files.emit(data);
+        console.log(data);
+        subsciption.unsubscribe();
+      },
+    );
 
   }
 
@@ -47,6 +54,10 @@ export class FileUploadComponent {
       </div>
       <!--<file-drop fxFlex headertext="Drop File Here" (onFileDrop)="dropped($event, false)">-->
       <!--</file-drop>-->
+      <div fxLayout="row" fxLayoutGap="8px" class="mb-8">
+        <button mat-raised-button color="primary" (click)="save()">Save</button>
+        <button mat-raised-button color="warm" (click)="cancel()">Cancel</button>
+      </div>
     </div>`,
   styles: [` .upload-choose {
     padding-top: 24px;
@@ -66,7 +77,7 @@ export class UploadDialog {
     public dialogRef: MatDialogRef<UploadDialog>) {}
 
   onNoClick(): void {
-    console.log(this.dialogRef.close());
+    console.log(this.dialogRef.close(null));
   }
 
   dropped(event: UploadEvent, isQuestion) {
@@ -113,8 +124,16 @@ export class UploadDialog {
     if (isQuestion) {
       this.questionFile = files.item(0);
     }else {
-      this.studentFile = files.item(0)
+      this.studentFile = files.item(0);
     }
+  }
+
+  cancel() {
+    this.dialogRef.close();
+  }
+
+  save() {
+    this.dialogRef.close({ questionFile: this.questionFile, studentFile: this.studentFile });
   }
 
 }

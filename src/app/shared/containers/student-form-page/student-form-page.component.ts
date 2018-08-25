@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 
 import * as fromEvaluate from '../../../evaluator/reducers';
@@ -14,6 +14,7 @@ import {Question} from '../../../evaluator/models/question.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StudentFormPageComponent implements OnInit {
+  @Input() showStudentScore: boolean;
   students: Observable<Student[]>;
   questions: Observable<Question[]>;
   selected: Observable<number>;

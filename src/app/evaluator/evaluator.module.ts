@@ -7,7 +7,7 @@ import { ModelCardComponent } from './components/model-card/model-card.component
 import { StoreModule } from '@ngrx/store';
 import * as fromReducers from './reducers';
 import { EffectsModule } from '@ngrx/effects';
-import { StudentEffects } from './effects/student.effects';
+import { EvaluateEffects } from './effects/evaluate.effects';
 import { ResultPageComponent } from './containers/result-page/result-page.component';
 import { ResultCardComponent } from './components/result-card/result-card.component';
 import { ResultDetailComponent } from './components/result-detail/result-detail.component';
@@ -50,7 +50,7 @@ export class EvaluatorModule { }
       fromReducers.reducers,
       { metaReducers: fromReducers.metaReducers },
     ),
-    EffectsModule.forFeature([StudentEffects]),
+    EffectsModule.forFeature([EvaluateEffects]),
   ],
 })
 export class EvaluatorRootModule {}

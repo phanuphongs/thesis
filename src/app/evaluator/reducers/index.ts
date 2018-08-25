@@ -8,15 +8,21 @@ import {
 import { environment } from '../../../environments/environment';
 import * as fromQuestion from './question.reducer';
 import * as fromStudent from './student.reducer';
+import * as fromEvaluate from './evaluate.reducer';
+import * as fromResult from './result.reducer';
 
 export interface State {
   question: fromQuestion.State;
   student: fromStudent.State;
+  evaluate: fromEvaluate.State;
+  result: fromResult.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
   question: fromQuestion.reducer,
   student: fromStudent.reducer,
+  evaluate: fromEvaluate.reducer,
+  result: fromResult.reducer,
 };
 
 
@@ -52,6 +58,24 @@ export const selectedQuestion = createSelector(
   fromQuestion.getSelected,
 );
 
+export const evaluateEntitiesState = createSelector(
+  getEvaluateState,
+  state => state.evaluate,
+);
 
+export const selectAllModels = createSelector(
+  evaluateEntitiesState,
+  fromEvaluate.selectAll,
+);
+
+export const resultEntitiesState = createSelector(
+  getEvaluateState,
+  state => state.result,
+);
+
+export const selectAllResults = createSelector(
+  resultEntitiesState,
+  fromResult.selectAll,
+);
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

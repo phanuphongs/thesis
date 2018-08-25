@@ -5,7 +5,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/evaluate', pathMatch: 'full' },
   {
     path: 'evaluate',
-    loadChildren: '../evaluator/evaluator.module#EvaluatorModule',
+    loadChildren: 'src/app/evaluator/evaluator.module#EvaluatorModule',
   },
   {
     path: 'create',

@@ -26,6 +26,8 @@ import { SidenavComponent } from './shared/components/sidenav.component';
 import { NavItemComponent } from './shared/components/nav-item.component';
 import { LayoutComponent } from './shared/components/layout.component';
 import { EvaluatorRootModule } from './evaluator/evaluator.module';
+import {EvaluateService} from './shared/services/evaluate.service';
+import {ApiService} from './shared/services/api.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { EvaluatorRootModule } from './evaluator/evaluator.module';
   ],
   providers: [
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
+    EvaluateService,
+    ApiService,
   ],
   bootstrap: [AppComponent],
 })

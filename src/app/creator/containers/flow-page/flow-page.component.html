@@ -1,8 +1,14 @@
 <div class="m-48">
   <mat-card>
     <div fxLayout="row" class="w-100-p" fxLayoutAlign="flex-end">
-      <file-upload></file-upload>
+      <file-upload (files)="selectFile($event)"></file-upload>
     </div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Model Name"
+        [(ngModel)]="name">
+    </mat-form-field>
     <mat-tab-group>
       <mat-tab label="Question">
         <ng-template matTabContent>
@@ -11,12 +17,13 @@
       </mat-tab>
       <mat-tab label="Student">
         <ng-template matTabContent>
-          <app-student-form-page></app-student-form-page>
+          <app-student-form-page [showStudentScore]="true"></app-student-form-page>
         </ng-template>
       </mat-tab>
     </mat-tab-group>
-    <mat-card-actions>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="start" fxLayoutGap="8px">
       <button mat-raised-button color="primary" (click)="create()">Create</button>
+      <button mat-raised-button color="warm" (click)="reset()">Rest</button>
     </mat-card-actions>
   </mat-card>
 </div>

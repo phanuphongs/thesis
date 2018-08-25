@@ -15,6 +15,7 @@ import { MatAccordion } from '@angular/material/expansion';
 export class StudentFormComponent implements OnInit, OnChanges {
   @Input() questions: Question[];
   @Input() student: Student;
+  @Input() showStudentScore: boolean;
   @Output() dataChange = new EventEmitter();
   form: FormGroup;
   formErrors: any;
@@ -24,20 +25,18 @@ export class StudentFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.student) {
-      console.log('student');
-      console.log(changes.student.currentValue)
       this.initForm(changes.student.currentValue);
       this.answers = {
         ...changes.student.currentValue.answers,
       };
     }
     if (changes.questions) {
-      console.log('question');
       const keys = Object.keys(this.answers);
       changes.questions.currentValue.forEach(
         (ele) => {
           if (keys.indexOf(`${ele.id}`) < 0) {
             this.answers[ele.id] = {
+              question: ele,
               answer: '',
               score: '',
               expand: false,
@@ -69,19 +68,8 @@ export class StudentFormComponent implements OnInit, OnChanges {
       ...this.form.value,
       answers: this.answers,
     };
-    console.log(student);
     this.dataChange.emit(student);
   }
-
-  public textAreaChange(): void {
-    const student = {
-      ...this.form.value,
-      answers: this.answers,
-    };
-    console.log(student);
-    this.dataChange.emit(student);
-  }
-
 
   private initForm(student: Student): void {
     this.formErrors = {

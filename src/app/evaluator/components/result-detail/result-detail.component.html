@@ -1,11 +1,11 @@
 <div fxLayout="row" fxLayoutAlign="start flex-end"  class="w-100-p">
   <mat-form-field fxFlex="30">
-    <input matInput placeholder="Question" class="w-100-p">
+    <input matInput placeholder="Question" class="w-100-p" [value]="answer.question" [disabled]="true">
   </mat-form-field>
   <mat-form-field fxFlex="50">
-    <textarea matInput placeholder="Answer" mat-autosize="true" class="w-100-p"></textarea>
+    <textarea matInput placeholder="Answer" mat-autosize="true" class="w-100-p" [value]="getAnswer(answer.answer)" [disabled]="true"></textarea>
   </mat-form-field>
   <mat-form-field fxFlex="20">
-    <input matInput placeholder="Score" class="w-100-p">
+    <input matInput placeholder="Score" class="w-100-p" [value]="answer?.score[0]" [disabled]="true">
   </mat-form-field>
 </div>

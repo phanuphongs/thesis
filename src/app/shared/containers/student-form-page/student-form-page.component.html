@@ -10,6 +10,7 @@
     *ngFor="let student of students | async; let i = index">
     <app-student-form
       [student]="student"
+      [showStudentScore]="showStudentScore"
       [questions]="questions | async"
       (dataChange)="formChange($event)"
       class="w-100-p"></app-student-form>

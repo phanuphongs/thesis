@@ -6,12 +6,12 @@
     <mat-card-content class="m-0" fxLayout="row" fxLayoutAlign="space-between center">
       <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="70">
         <div fxLayout="column" fxLayoutAlign="center center">
-          <h3 class="m-0 sub-highlight-number">57090021</h3>
+          <h3 class="m-0 sub-highlight-number">{{student.studentId}}</h3>
         </div>
       </div>
     </mat-card-content>
   </div>
-  <div fxLayoutAlign="center center" fxLayout="column" fxFlex="auto">
-    <span class="highlight-number">60<span class="percent">/</span>120<span class="percent"> point</span></span>
-  </div>
+  <!--<div fxLayoutAlign="center center" fxLayout="column" fxFlex="auto">-->
+    <!--<span class="highlight-number">{{calculatePoint(student)}}<span class="percent">/</span>{{calculateTotalPoint(student)}}<span class="percent"> point</span></span>-->
+  <!--</div>-->
 </mat-card>

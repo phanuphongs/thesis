@@ -1,6 +1,6 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Student } from '../models/student.model';
-import { StudentActions, StudentActionTypes } from '../actions/student.actions';
+import { ResultActions, ResultActionTypes } from '../actions/result.action';
 import { EvaluateActions, EvaluateActionTypes } from '../actions/evaluate.action';
 import { Question } from '../models/question.model';
 
@@ -18,14 +18,14 @@ export const initialState: State = adapter.getInitialState({
 
 export function reducer(
   state = initialState,
-  action: StudentActions | EvaluateActions,
+  action: ResultActions | EvaluateActions,
 ): State {
   switch (action.type) {
-    // case EvaluateActionTypes.PredictSuccess: {
-    //   return adapter.addAll(action.payload, state);
-    // }
+    case EvaluateActionTypes.PredictSuccess: {
+      return adapter.addAll(action.payload, state);
+    }
 
-    case StudentActionTypes.InitialStudent: {
+    case ResultActionTypes.InitialResult: {
       if (adapter.getSelectors().selectTotal(state)) {
         return state;
       }
@@ -40,7 +40,7 @@ export function reducer(
       };
     }
 
-    case StudentActionTypes.AddStudent: {
+    case ResultActionTypes.AddResult: {
       const entities = adapter.getSelectors().selectAll(state);
       const student: Student = {
         id:  entities[entities.length - 1].id + 1,
@@ -50,43 +50,43 @@ export function reducer(
       return adapter.addOne(student, state);
     }
 
-    case StudentActionTypes.UpsertStudent: {
+    case ResultActionTypes.UpsertResult: {
       return adapter.upsertOne(action.payload.student, state);
     }
 
-    case StudentActionTypes.AddStudents: {
+    case ResultActionTypes.AddResults: {
       return adapter.addMany(action.payload.students, state);
     }
 
-    case StudentActionTypes.UpsertStudents: {
+    case ResultActionTypes.UpsertResults: {
       return adapter.upsertMany(action.payload.students, state);
     }
 
-    case StudentActionTypes.UpdateStudent: {
+    case ResultActionTypes.UpdateResult: {
       return adapter.updateOne(action.payload.student, state);
     }
 
-    case StudentActionTypes.UpdateStudents: {
+    case ResultActionTypes.UpdateResults: {
       return adapter.updateMany(action.payload.students, state);
     }
 
-    case StudentActionTypes.DeleteStudent: {
+    case ResultActionTypes.DeleteResult: {
       return adapter.removeOne(action.payload.id, state);
     }
 
-    case StudentActionTypes.DeleteStudents: {
+    case ResultActionTypes.DeleteResults: {
       return adapter.removeMany(action.payload.ids, state);
     }
 
-    case StudentActionTypes.LoadStudents: {
+    case ResultActionTypes.LoadResults: {
       return state;
     }
 
-    case StudentActionTypes.ClearStudents: {
+    case ResultActionTypes.ClearResults: {
       return adapter.removeAll(state);
     }
 
-    case StudentActionTypes.SelectStudent: {
+    case ResultActionTypes.SelectResult: {
       return {
         ...state,
         selected: action.payload.id,

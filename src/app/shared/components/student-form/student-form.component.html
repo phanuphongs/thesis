@@ -21,14 +21,14 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div fxLayout="column" fxLayoutAlign="start start" class="w-100-p">
-        <mat-form-field>
+        <mat-form-field *ngIf="showStudentScore">
           <input
             type="number"
             matInput
             placeholder="Score"
             [(ngModel)]="answers[question.id].score"
             [ngModelOptions]="{standalone: true}"
-            (change)="formChange()">
+            (focusout)="formChange()">
         </mat-form-field>
         <mat-form-field class="w-100-p">
           <textarea
@@ -37,7 +37,7 @@
             mat-autosize="true"
             [(ngModel)]="answers[question.id].answer"
             [ngModelOptions]="{standalone: true}"
-            (change)="textAreaChange()"></textarea>
+            (focusout)="formChange()"></textarea>
         </mat-form-field>
       </div>
     </mat-expansion-panel>

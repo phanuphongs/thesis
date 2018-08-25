@@ -13,6 +13,10 @@ body {
   padding: 16px !important;
 }
 
+.pr-16 {
+  padding-right: 16px !important;
+}
+
 .p-24 {
   padding: 24px !important;
 }
@@ -23,6 +27,10 @@ body {
 
 .m-0 {
   margin: 0 !important;
+}
+
+mb-8 {
+  margin-bottom: 8px !important;
 }
 
 .m-16 {
